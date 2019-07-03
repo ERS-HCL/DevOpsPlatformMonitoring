@@ -5,4 +5,4 @@ This repository contains the predefined dashboards and configuration files to do
 ## A. Install Prometheus Operator 
 1. helm install stable/prometheus-operator. You can customize the values.yaml according to your environment with specific components installed and with RBAC enabled / disabled. 
 
- 
+ ### configuration
