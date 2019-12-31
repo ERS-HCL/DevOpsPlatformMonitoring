@@ -1,0 +1,16 @@
+- name: "prometheus-jenkins-servicemonitor"
+     labels:
+       app: jenkins
+       chart: prometheus-operator-1.6.0
+       heritage: Tiller
+       release: prometheus-operator
+     selector: 
+      matchLabels:
+       app: jenkins
+       release: prometheus-operator
+     namespaceSelector:
+       matchNames: [nameofnamespace]
+     endpoints: 
+       - targetPort: 8080
+         interval: 10s
+         path: /prometheus

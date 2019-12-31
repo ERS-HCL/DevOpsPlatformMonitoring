@@ -1,0 +1,21 @@
+- name: "prometheus-gitlab-servicemonitor"
+     labels:
+       app: gitlab
+       chart: prometheus-operator-1.6.0
+       heritage: Tiller
+       release: prometheus-operator
+     selector: 
+      matchLabels:
+       app: gitlab
+       release: prometheus-operator
+     namespaceSelector:
+       matchNames: [hcllimited-devopscoeart-toolchaintest]
+     endpoints: 
+       - targetPort: 80 
+         interval: 10s
+         path: /-/metrics
+         params:
+           token : ['ySnVJY_a4znHyvb1k4Hh']
+       - targetPort: 9168
+         interval: 10s
+         path: /metrics

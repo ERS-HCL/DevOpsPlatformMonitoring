@@ -1,0 +1,18 @@
+ - name: "prometheus-jira-servicemonitor"
+     labels:
+       app: jira
+       chart: prometheus-operator-1.6.0
+       heritage: Tiller
+       release: prometheus-operator
+     selector: 
+      matchLabels:
+       app: jira
+       release: prometheus-operator
+     namespaceSelector:
+       matchNames: [hcllimited-devopscoeart-toolchain]
+     endpoints: 
+       - targetPort: 8080
+         interval: 10s
+         path: /plugins/servlet/prometheus/metrics
+         params:
+           token : ['YGnhnkOTj9R3hVC8HQCoBccC3N7I593FNDL']

@@ -1,0 +1,23 @@
+- name: "prometheus-gerrit-servicemonitor"
+     labels:
+       app: gerrit
+       chart: prometheus-operator-1.6.0
+       heritage: Tiller
+       release: prometheus-operator
+     selector: 
+      matchLabels:
+       app: gerrit
+       release: prometheus-operator
+     namespaceSelector:
+       matchNames: [nameofnamespace]
+     endpoints: 
+       - targetPort: 8080
+         basicAuth:
+           password:
+             name: basic-auth
+             key: password
+           username:
+             name: basic-auth
+             key: user
+         interval: 10s
+         path: /a/plugins/metrics-reporter-prometheus/metrics
